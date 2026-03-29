@@ -87,7 +87,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
           >
             <img
-              src="/profile.jpg"
+              src="public/profile.jpg"
               alt="Ayasya"
               className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-green-300 shadow-[0_0_40px_rgba(34,197,94,0.5)]"
             />
