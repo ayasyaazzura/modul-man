@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 
 const certificates = [
   {
-    title: 'Juara 1 Lomba Vokal Duet SMA',
-    issuer: 'MAN 1 Banda Aceh',
+    title: 'juara 3 badminton',
+    issuer: 'lomba antar kampung',
     date: '2022',
     credentialId: 'VCD-001',
     image: '🎤',
@@ -13,8 +13,8 @@ const certificates = [
     link: '#',
   },
   {
-    title: 'Juara 2 Festival Vokal Duet Kota',
-    issuer: 'Dinas Pendidikan Banda Aceh',
+    title: 'Juara 2 tenis meja',
+    issuer: 'event sekolah',
     date: '2023',
     credentialId: 'VCD-002',
     image: '🎶',
@@ -22,8 +22,8 @@ const certificates = [
     link: '#',
   },
   {
-    title: 'Harapan 1 Lomba Vokal Duet Nasional',
-    issuer: 'Kementerian Pendidikan',
+    title: 'Harapan 1 Lomba Vokal Duet',
+    issuer: 'almanar extalent',
     date: '2023',
     credentialId: 'VCD-003',
     image: '🏆',
