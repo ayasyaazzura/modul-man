@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { ArrowDown, Github, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThreeScene from './ThreeScene';
 
@@ -28,21 +28,29 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
-          {/* Badge */}
+          {/* FOTO PROFIL */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-6"
           >
-            <motion.span
-              className="inline-block px-4 py-2 rounded-full bg-green-200 text-green-800 text-sm font-medium mb-6"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              👋 Selamat datang di portfolio saya
-            </motion.span>
+            <img
+              src="/profile.jpg" // ⬅️ GANTI dengan nama file kamu
+              alt="Ayasya Azzura"
+              className="w-32 h-32 object-cover rounded-full border-4 border-green-300 shadow-lg"
+            />
           </motion.div>
+
+          {/* Badge */}
+          <motion.span
+            className="inline-block px-4 py-2 rounded-full bg-green-200 text-green-800 text-sm font-medium mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            👋 Selamat datang di portfolio saya
+          </motion.span>
 
           {/* Title */}
           <motion.h1
@@ -94,7 +102,7 @@ export default function HeroSection() {
             </Button>
           </motion.div>
 
-          {/* Social Icons */}
+          {/* Social */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -102,16 +110,14 @@ export default function HeroSection() {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Github, href: 'https://github.com/ayasyaazzura', label: 'GitHub' },
-              { icon: Instagram, href: 'https://www.instagram.com/_ayasyazzura_/', label: 'Instagram' },
+              { icon: Github, href: 'https://github.com/ayasyaazzura' },
+              { icon: Instagram, href: 'https://www.instagram.com/_ayasyazzura_/' },
             ].map((social, index) => (
               <motion.a
                 key={index}
                 href={social.href}
-                className="p-3 rounded-full bg-green-100 hover:bg-green-200 transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={social.label}
+                className="p-3 rounded-full bg-green-100 hover:bg-green-200 transition"
+                whileHover={{ scale: 1.1 }}
               >
                 <social.icon className="h-5 w-5 text-green-700" />
               </motion.a>
@@ -121,12 +127,10 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Button */}
+      {/* Scroll */}
       <motion.button
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full bg-green-200 animate-bounce cursor-pointer"
-        whileHover={{ scale: 1.1 }}
-        aria-label="Scroll ke About"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full bg-green-200 animate-bounce"
       >
         <ArrowDown className="h-5 w-5 text-green-800" />
       </motion.button>
