@@ -1,122 +1,78 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Youtube, Instagram } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import ThreeScene from './ThreeScene';
+import { Github, Instagram, Heart } from 'lucide-react';
 
-export default function HeroSection() {
-  const scrollToAbout = () => {
-    const element = document.querySelector('#about');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/ayasyaazzura-lang', label: 'GitHub' },
+    { icon: Instagram, href: 'https://www.instagram.com/_ayasyazzura_', label: 'Instagram' },
+  ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      <ThreeScene />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.span 
-              className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
+    <footer className="py-8 border-t border-emerald-100 dark:border-emerald-900/50 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          
+          {/* Section Kiri: Foto & Copyright */}
+          <div className="flex items-center gap-4">
+            {/* Foto Profil */}
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative group"
             >
-              👋 Selamat datang di portfolio saya
-            </motion.span>
-          </motion.div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+              <img 
+                src="https://github.com/ayasyaazzura-lang.png" // Mengambil otomatis dari foto GitHub atau ganti path lokal
+                alt="Ayasya Profile" 
+                className="relative w-12 h-12 rounded-full border-2 border-white dark:border-slate-900 object-cover"
+              />
+            </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-          >
-            Fullstack Developer
-            <br />
-            <span className="text-gradient">&amp; Content Creator</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-          >
-            Saya membangun aplikasi web yang indah dan fungsional, 
-            serta membagikan pengetahuan melalui konten yang inspiratif.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-          >
-            <Button 
-              size="lg" 
-              className="rounded-full px-8 shadow-glow"
-              onClick={() => {
-                const element = document.querySelector('#projects');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
+            {/* Copyright Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-muted-foreground font-medium text-sm md:text-base"
             >
-              Lihat Projects
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="rounded-full px-8"
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Hubungi Saya
-            </Button>
-          </motion.div>
+              <span>© {currentYear} Made with</span>
+              <div className="flex items-center gap-1">
+                <Heart className="h-4 w-4 text-rose-400 fill-rose-400 animate-pulse" />
+                <span>by 
+                  <span className="ml-1 bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent font-bold">
+                    ayasya
+                  </span>
+                </span>
+              </div>
+            </motion.div>
+          </div>
 
+          {/* Section Kanan: Social Links */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex items-center justify-center gap-6"
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3"
           >
-            {[
-              { icon: Github, href: '#', label: 'GitHub' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Youtube, href: '#', label: 'YouTube' },
-              { icon: Instagram, href: '#', label: 'Instagram' },
-            ].map((social) => (
-              <motion.a
+            {socialLinks.map((social) => (
+              <a
                 key={social.label}
                 href={social.href}
-                className="p-3 rounded-full glass hover:shadow-glow transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full transition-all text-muted-foreground hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-transparent hover:border-emerald-100 dark:hover:border-emerald-900/50"
                 aria-label={social.label}
               >
-                <social.icon className="h-5 w-5 text-foreground" />
-              </motion.a>
+                <social.icon className="h-5 w-5" />
+              </a>
             ))}
           </motion.div>
+          
         </div>
       </div>
-
-      <motion.button
-        onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full glass animate-float cursor-pointer"
-        whileHover={{ scale: 1.1 }}
-        aria-label="Scroll to About"
-      >
-        <ArrowDown className="h-5 w-5 text-primary" />
-      </motion.button>
-    </section>
+    </footer>
   );
 }
