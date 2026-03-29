@@ -6,122 +6,91 @@ import ThreeScene from './ThreeScene';
 export default function HeroSection() {
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollTo = (id: string) => {
     const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-100 via-green-200 to-green-300"
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-100 via-green-200 to-green-300">
       <ThreeScene />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
 
-          {/* FOTO PROFIL */}
+          {/* TEXT */}
+          <div className="text-center md:text-left">
+            <motion.span
+              className="inline-block px-4 py-2 rounded-full bg-green-200 text-green-800 text-sm font-medium mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              👋 Selamat datang di portfolio saya
+            </motion.span>
+
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-6 text-green-900"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              Ayasya Azzura
+              <br />
+              <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+                MAN 1 Banda Aceh
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-lg text-green-800 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              Saya adalah pelajar yang tertarik pada dunia teknologi,
+              desain, dan pembuatan konten kreatif.
+            </motion.p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+              <Button
+                className="bg-green-500 hover:bg-green-600 text-white"
+                onClick={() => scrollTo('#projects')}
+              >
+                Lihat Karya Saya
+              </Button>
+
+              <Button
+                variant="outline"
+                className="border-green-500 text-green-700"
+                onClick={() => scrollTo('#contact')}
+              >
+                Hubungi Saya
+              </Button>
+            </div>
+
+            {/* Social */}
+            <div className="flex gap-4 justify-center md:justify-start">
+              <a href="https://github.com/ayasyaazzura">
+                <Github className="text-green-700" />
+              </a>
+              <a href="https://www.instagram.com/_ayasyazzura_/">
+                <Instagram className="text-green-700" />
+              </a>
+            </div>
+          </div>
+
+          {/* FOTO BESAR */}
           <motion.div
+            className="flex justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center mb-6"
           >
             <img
-              src="/profile.jpg" // ⬅️ GANTI dengan nama file kamu
-              alt="Ayasya Azzura"
-              className="w-32 h-32 object-cover rounded-full border-4 border-green-300 shadow-lg"
+              src="/profile.jpg"
+              alt="Ayasya"
+              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-green-300 shadow-[0_0_40px_rgba(34,197,94,0.5)]"
             />
-          </motion.div>
-
-          {/* Badge */}
-          <motion.span
-            className="inline-block px-4 py-2 rounded-full bg-green-200 text-green-800 text-sm font-medium mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            👋 Selamat datang di portfolio saya
-          </motion.span>
-
-          {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-green-900"
-          >
-            Ayasya Azzura
-            <br />
-            <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-              MAN 1 Banda Aceh
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-green-800 mb-8 max-w-2xl mx-auto"
-          >
-            Saya adalah pelajar yang tertarik pada dunia teknologi,
-            desain, dan pembuatan konten kreatif.
-          </motion.p>
-
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-          >
-            <Button
-              size="lg"
-              className="rounded-full px-8 bg-green-500 hover:bg-green-600 text-white shadow-md"
-              onClick={() => scrollTo('#projects')}
-            >
-              Lihat Karya Saya
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 border-green-500 text-green-700 hover:bg-green-100"
-              onClick={() => scrollTo('#contact')}
-            >
-              Hubungi Saya
-            </Button>
-          </motion.div>
-
-          {/* Social */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex items-center justify-center gap-6"
-          >
-            {[
-              { icon: Github, href: 'https://github.com/ayasyaazzura' },
-              { icon: Instagram, href: 'https://www.instagram.com/_ayasyazzura_/' },
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.href}
-                className="p-3 rounded-full bg-green-100 hover:bg-green-200 transition"
-                whileHover={{ scale: 1.1 }}
-              >
-                <social.icon className="h-5 w-5 text-green-700" />
-              </motion.a>
-            ))}
           </motion.div>
 
         </div>
@@ -130,9 +99,9 @@ export default function HeroSection() {
       {/* Scroll */}
       <motion.button
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full bg-green-200 animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 bg-green-200 rounded-full animate-bounce"
       >
-        <ArrowDown className="h-5 w-5 text-green-800" />
+        <ArrowDown className="text-green-800" />
       </motion.button>
     </section>
   );
