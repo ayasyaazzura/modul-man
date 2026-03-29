@@ -4,58 +4,52 @@ import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Platform e-commerce modern dengan fitur lengkap termasuk payment gateway, inventory management, dan analytics dashboard.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    image: '🛒',
+    title: 'Latihan Pidato Bahasa Arab',
+    description: 'Kumpulan latihan dan penampilan pidato Bahasa Arab yang melatih kepercayaan diri dan kemampuan berbicara di depan umum.',
+    tags: ['Public Speaking', 'Arabic', 'Confidence'],
+    image: '🗣️',
     color: 'from-green-200 to-green-400',
-    github: '#',
-    demo: '#',
   },
   {
-    title: 'Learning Management System',
-    description: 'Platform pembelajaran online dengan video streaming, quiz interaktif, dan progress tracking.',
-    tags: ['Next.js', 'TypeScript', 'MongoDB', 'WebRTC'],
-    image: '📚',
+    title: 'Konten Nyanyi',
+    description: 'Berbagai cover lagu dan latihan vokal yang saya bagikan sebagai bentuk ekspresi diri dan pengembangan skill bernyanyi.',
+    tags: ['Singing', 'Vocal', 'Music'],
+    image: '🎤',
     color: 'from-green-300 to-green-500',
-    github: '#',
-    demo: '#',
+    isContent: true,
+    youtube: '#',
   },
   {
-    title: 'Social Media Dashboard',
-    description: 'Dashboard analytics untuk social media dengan real-time data visualization dan reporting.',
-    tags: ['React', 'D3.js', 'Firebase', 'Tailwind'],
-    image: '📊',
+    title: 'Dance Performance',
+    description: 'Penampilan dan latihan menari yang menggabungkan kreativitas, ekspresi, dan kepercayaan diri di atas panggung.',
+    tags: ['Dance', 'Performance', 'Creative'],
+    image: '💃',
     color: 'from-green-400 to-green-600',
-    github: '#',
-    demo: '#',
+    isContent: true,
+    youtube: '#',
   },
   {
-    title: 'AI Content Generator',
-    description: 'Tool untuk generate konten menggunakan AI dengan integrasi berbagai model language.',
-    tags: ['Python', 'FastAPI', 'OpenAI', 'React'],
-    image: '🤖',
+    title: 'Konten Kreatif',
+    description: 'Membuat berbagai konten kreatif di media sosial untuk berbagi pengalaman, ide, dan aktivitas sehari-hari.',
+    tags: ['Content Creator', 'Creative', 'Social Media'],
+    image: '📱',
     color: 'from-green-300 to-emerald-500',
-    github: '#',
-    demo: '#',
+    isContent: true,
+    youtube: '#',
   },
   {
-    title: 'Video Editing Tutorial',
-    description: 'Seri tutorial video editing dengan 100+ episode dan 10k+ subscribers.',
-    tags: ['Premiere Pro', 'After Effects', 'YouTube'],
-    image: '🎬',
+    title: 'Prestasi & Pengalaman',
+    description: 'Berbagai pengalaman lomba dan kegiatan yang membantu saya berkembang dalam skill dan kepercayaan diri.',
+    tags: ['Achievement', 'Experience', 'Growth'],
+    image: '🏆',
     color: 'from-green-400 to-lime-500',
-    isContent: true,
-    youtube: '#',
   },
   {
-    title: 'Coding Tips & Tricks',
-    description: 'Konten tips programming dan best practices untuk developer Indonesia.',
-    tags: ['Instagram', 'TikTok', 'YouTube Shorts'],
-    image: '💡',
+    title: 'Belajar & Eksplorasi',
+    description: 'Perjalanan saya dalam mencoba hal-hal baru, belajar, dan terus berkembang menjadi lebih baik setiap harinya.',
+    tags: ['Learning', 'Exploration', 'Self Growth'],
+    image: '🌱',
     color: 'from-green-200 to-emerald-400',
-    isContent: true,
-    youtube: '#',
   },
 ];
 
@@ -63,6 +57,8 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-20 md:py-32 bg-green-50">
       <div className="container mx-auto px-4">
+        
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +68,7 @@ export default function ProjectsSection() {
         >
           <span className="text-green-600 font-medium mb-2 block">Portfolio</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-green-900">
-            Projects &amp; Karya
+            Karya & Aktivitas Saya
           </h2>
           <div className="w-20 h-1 bg-green-500 mx-auto rounded-full" />
         </motion.div>
@@ -119,36 +115,9 @@ export default function ProjectsSection() {
                       </span>
                     ))}
                   </div>
-                  
-                  <div className="flex gap-2 pt-2">
-                    {project.github && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-full border-green-500 text-green-700 hover:bg-green-100"
-                        asChild
-                      >
-                        <a href={project.github}>
-                          <Github className="h-4 w-4 mr-1" />
-                          Code
-                        </a>
-                      </Button>
-                    )}
 
-                    {project.demo && (
-                      <Button
-                        size="sm"
-                        className="rounded-full bg-green-500 hover:bg-green-600 text-white"
-                        asChild
-                      >
-                        <a href={project.demo}>
-                          <ExternalLink className="h-4 w-4 mr-1" />
-                          Demo
-                        </a>
-                      </Button>
-                    )}
-
-                    {project.youtube && (
+                  {(project.youtube) && (
+                    <div className="pt-2">
                       <Button
                         size="sm"
                         className="rounded-full bg-green-500 hover:bg-green-600 text-white"
@@ -156,11 +125,11 @@ export default function ProjectsSection() {
                       >
                         <a href={project.youtube}>
                           <Play className="h-4 w-4 mr-1" />
-                          Watch
+                          Lihat
                         </a>
                       </Button>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                 </div>
               </div>

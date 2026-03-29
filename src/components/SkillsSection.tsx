@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 
 const skills = {
-  frontend: [
-    { name: 'Pidato Bahasa Arab', level: 95 },
+  speaking: [
+    { name: 'Arabic Public Speaking', level: 95 },
   ],
-  backend: [
-    { name: 'Nyanyi', level: 90 },
+  vocal: [
+    { name: 'Singing & Vocal Performance', level: 90 },
   ],
-  tools: [
-    { name: 'Nari', level: 85 },
+  performance: [
+    { name: 'Dance & Stage Performance', level: 85 },
   ],
 };
 
@@ -44,6 +44,7 @@ export default function SkillsSection() {
     <section id="skills" className="py-20 md:py-32 bg-green-50">
       <div className="container mx-auto px-4">
 
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,14 +54,14 @@ export default function SkillsSection() {
         >
           <span className="text-green-600 font-medium mb-2 block">Keahlian</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-green-900">
-            Skills &amp; Talenta
+            Skills & Talenta Saya
           </h2>
           <div className="w-20 h-1 bg-green-500 mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-          {/* Pidato */}
+          {/* Public Speaking */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,17 +73,19 @@ export default function SkillsSection() {
               <div className="p-3 rounded-xl bg-green-100">
                 <span className="text-2xl">🗣️</span>
               </div>
-              <h3 className="font-display text-xl font-bold text-green-900">Pidato</h3>
+              <h3 className="font-display text-xl font-bold text-green-900">
+                Public Speaking
+              </h3>
             </div>
 
             <div className="space-y-4">
-              {skills.frontend.map((skill, index) => (
+              {skills.speaking.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>
           </motion.div>
 
-          {/* Nyanyi */}
+          {/* Singing */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,17 +97,19 @@ export default function SkillsSection() {
               <div className="p-3 rounded-xl bg-green-100">
                 <span className="text-2xl">🎤</span>
               </div>
-              <h3 className="font-display text-xl font-bold text-green-900">Nyanyi</h3>
+              <h3 className="font-display text-xl font-bold text-green-900">
+                Singing
+              </h3>
             </div>
 
             <div className="space-y-4">
-              {skills.backend.map((skill, index) => (
+              {skills.vocal.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>
           </motion.div>
 
-          {/* Nari */}
+          {/* Dance */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,11 +121,13 @@ export default function SkillsSection() {
               <div className="p-3 rounded-xl bg-green-100">
                 <span className="text-2xl">💃</span>
               </div>
-              <h3 className="font-display text-xl font-bold text-green-900">Nari</h3>
+              <h3 className="font-display text-xl font-bold text-green-900">
+                Dance
+              </h3>
             </div>
 
             <div className="space-y-4">
-              {skills.tools.map((skill, index) => (
+              {skills.performance.map((skill, index) => (
                 <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
               ))}
             </div>

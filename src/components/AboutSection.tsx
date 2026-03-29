@@ -3,15 +3,17 @@ import { Code2, Video, Coffee, Rocket } from 'lucide-react';
 
 export default function AboutSection() {
   const stats = [
-    { icon: Code2, value: '50+', label: 'Projects Selesai' },
-    { icon: Video, value: '100+', label: 'Video Konten' },
-    { icon: Coffee, value: '1000+', label: 'Cangkir Kopi' },
-    { icon: Rocket, value: '5+', label: 'Tahun Pengalaman' },
+    { icon: Code2, value: '10+', label: 'Karya Dibuat' },
+    { icon: Video, value: '50+', label: 'Konten Kreatif' },
+    { icon: Coffee, value: '∞', label: 'Semangat Belajar' },
+    { icon: Rocket, value: '3+', label: 'Tahun Berkembang' },
   ];
 
   return (
     <section id="about" className="py-20 md:py-32 bg-green-50">
       <div className="container mx-auto px-4">
+        
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,6 +29,8 @@ export default function AboutSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          
+          {/* FOTO / ICON */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,16 +40,18 @@ export default function AboutSection() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
                 <div className="w-full h-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center">
-                  <span className="text-8xl">👨‍💻</span>
+                  <span className="text-8xl">👩‍🎓</span>
                 </div>
               </div>
+
               <div className="absolute -bottom-6 -right-6 p-4 bg-white rounded-xl shadow-lg">
-                <p className="font-display font-bold text-2xl text-green-700">5+ Tahun</p>
-                <p className="text-sm text-green-600">Pengalaman</p>
+                <p className="font-display font-bold text-2xl text-green-700">3+ Tahun</p>
+                <p className="text-sm text-green-600">Belajar & Berkembang</p>
               </div>
             </div>
           </motion.div>
 
+          {/* TEXT */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -54,20 +60,22 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <h3 className="font-display text-2xl md:text-3xl font-bold text-green-900">
-              Passionate Developer &amp; Creator
+              Pelajar & Creative Enthusiast
             </h3>
+
             <p className="text-green-800 leading-relaxed">
-              Saya adalah seorang Fullstack Web Developer dengan passion yang kuat dalam menciptakan 
-              solusi digital yang inovatif. Dengan pengalaman lebih dari 5 tahun, saya telah 
-              membantu berbagai klien dan perusahaan dalam mewujudkan ide-ide mereka menjadi 
-              aplikasi web yang powerful dan user-friendly.
-            </p>
-            <p className="text-green-800 leading-relaxed">
-              Selain coding, saya juga aktif sebagai Content Creator, berbagi pengetahuan 
-              tentang pemrograman dan teknologi melalui berbagai platform. Saya percaya bahwa 
-              berbagi ilmu adalah cara terbaik untuk terus belajar dan berkembang.
+              Saya adalah seorang pelajar yang memiliki ketertarikan besar di bidang teknologi, 
+              seni, dan kreativitas. Saya suka mengeksplor hal baru, mulai dari public speaking, 
+              membuat konten, hingga mencoba berbagai aktivitas kreatif lainnya.
             </p>
 
+            <p className="text-green-800 leading-relaxed">
+              Bagi saya, belajar bukan hanya tentang teori, tapi juga tentang pengalaman. 
+              Saya percaya bahwa dengan terus mencoba dan berkembang, saya bisa menjadi versi 
+              terbaik dari diri saya.
+            </p>
+
+            {/* STATS */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               {stats.map((stat, index) => (
                 <motion.div
@@ -84,6 +92,7 @@ export default function AboutSection() {
                 </motion.div>
               ))}
             </div>
+
           </motion.div>
         </div>
       </div>
