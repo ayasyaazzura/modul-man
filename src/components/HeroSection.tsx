@@ -102,10 +102,8 @@ export default function HeroSection() {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Github, href: '#', label: 'GitHub' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Youtube, href: '#', label: 'YouTube' },
-              { icon: Instagram, href: '#', label: 'Instagram' },
+              { icon: Github, href: 'https://github.com/ayasyaazzura', label: 'GitHub' },
+              { icon: Instagram, href: 'https://www.instagram.com/_ayasyazzura_/', label: 'Instagram' },
             ].map((social, index) => (
               <motion.a
                 key={index}
