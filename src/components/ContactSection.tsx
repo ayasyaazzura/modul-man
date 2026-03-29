@@ -74,7 +74,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
         body: formData,
       });
 
@@ -87,7 +87,6 @@ export default function ContactSection() {
 
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error: any) {
-      console.error('Error sending email:', error);
       toast({
         title: 'Gagal Mengirim',
         description: 'Terjadi kesalahan. Silakan coba lagi atau hubungi langsung via email.',
@@ -99,7 +98,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32">
+    <section id="contact" className="py-20 md:py-32 bg-green-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -108,14 +107,15 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Kontak</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
+          <span className="text-green-600 font-medium mb-2 block">Kontak</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-green-900">
             Hubungi Saya
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-green-500 mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -125,10 +125,10 @@ export default function ContactSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="font-display text-2xl font-bold mb-4">
+              <h3 className="font-display text-2xl font-bold mb-4 text-green-900">
                 Mari Berkolaborasi!
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-green-800 leading-relaxed">
                 Punya project menarik atau ingin berkolaborasi? Jangan ragu untuk 
                 menghubungi saya. Saya selalu terbuka untuk diskusi tentang project 
                 baru, ide kreatif, atau kesempatan untuk menjadi bagian dari visi Anda.
@@ -144,14 +144,14 @@ export default function ContactSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 glass rounded-xl hover:shadow-card-hover transition-all group"
+                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition group"
                 >
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <info.icon className="h-5 w-5 text-primary" />
+                  <div className="p-3 rounded-lg bg-green-100 group-hover:bg-green-200 transition">
+                    <info.icon className="h-5 w-5 text-green-600" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
-                    <p className="font-medium">{info.value}</p>
+                    <p className="text-sm text-green-700">{info.label}</p>
+                    <p className="font-medium text-green-900">{info.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -165,82 +165,64 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6 p-6 glass rounded-2xl shadow-card">
+            <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-2xl shadow-lg">
+              
               <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Nama
-                  </label>
+                <div>
+                  <label className="text-sm font-medium text-green-800">Nama</label>
                   <Input
-                    id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Nama Anda"
-                    className={errors.name ? 'border-destructive' : ''}
+                    className={errors.name ? 'border-red-500' : 'border-green-300 focus:border-green-500'}
                   />
-                  {errors.name && (
-                    <p className="text-xs text-destructive">{errors.name}</p>
-                  )}
+                  {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
+
+                <div>
+                  <label className="text-sm font-medium text-green-800">Email</label>
                   <Input
-                    id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="email@example.com"
-                    className={errors.email ? 'border-destructive' : ''}
+                    className={errors.email ? 'border-red-500' : 'border-green-300 focus:border-green-500'}
                   />
-                  {errors.email && (
-                    <p className="text-xs text-destructive">{errors.email}</p>
-                  )}
+                  {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">
-                  Subjek
-                </label>
+              <div>
+                <label className="text-sm font-medium text-green-800">Subjek</label>
                 <Input
-                  id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subjek pesan"
-                  className={errors.subject ? 'border-destructive' : ''}
+                  className={errors.subject ? 'border-red-500' : 'border-green-300 focus:border-green-500'}
                 />
-                {errors.subject && (
-                  <p className="text-xs text-destructive">{errors.subject}</p>
-                )}
+                {errors.subject && <p className="text-xs text-red-500">{errors.subject}</p>}
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Pesan
-                </label>
+              <div>
+                <label className="text-sm font-medium text-green-800">Pesan</label>
                 <Textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tuliskan pesan Anda..."
+                  placeholder="Tulis pesan..."
                   rows={5}
-                  className={errors.message ? 'border-destructive' : ''}
+                  className={errors.message ? 'border-red-500' : 'border-green-300 focus:border-green-500'}
                 />
-                {errors.message && (
-                  <p className="text-xs text-destructive">{errors.message}</p>
-                )}
+                {errors.message && <p className="text-xs text-red-500">{errors.message}</p>}
               </div>
 
               <Button
                 type="submit"
                 size="lg"
-                className="w-full rounded-full"
+                className="w-full rounded-full bg-green-500 hover:bg-green-600 text-white"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -255,8 +237,10 @@ export default function ContactSection() {
                   </>
                 )}
               </Button>
+
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>

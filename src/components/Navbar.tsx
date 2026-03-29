@@ -32,10 +32,10 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   };
 
   const navbarBg = isDark
-    ? 'bg-[#2B1123] shadow-lg'
+    ? 'bg-green-950/90 backdrop-blur-md shadow-lg'
     : isScrolled
-    ? 'bg-gradient-to-r from-[#A7C7E7] via-[#F5B7C1] to-white shadow-md'
-    : 'bg-gradient-to-r from-[#A7C7E7] via-[#F5B7C1] to-white';
+    ? 'bg-white/80 backdrop-blur-md shadow-md'
+    : 'bg-transparent';
 
   return (
     <motion.nav
@@ -46,17 +46,17 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-14 md:h-16">
 
-          {/* LOGO GRADIENT TERANG / GLOW */}
+          {/* LOGO */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
             className={`font-bold text-xl md:text-2xl cursor-pointer ${
               isDark
-                ? 'bg-pink-300 bg-clip-text text-transparent drop-shadow-[0_0_6px_#FFB6C1]'
-                : 'bg-gradient-to-r from-[#A7C7E7] via-[#F5B7C1] to-[#FFFFFF] bg-clip-text text-transparent'
+                ? 'text-green-300 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]'
+                : 'bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent'
             }`}
           >
-            ayasya's portofolio
+            ayasya's portfolio
           </a>
 
           {/* DESKTOP MENU */}
@@ -68,8 +68,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
                 onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
                 className={`transition font-medium ${
                   isDark
-                    ? 'text-[#FFB6C1] hover:text-[#FFD6DD]'
-                    : 'text-gray-700 hover:text-pink-500'
+                    ? 'text-green-300 hover:text-green-100'
+                    : 'text-green-800 hover:text-green-500'
                 }`}
               >
                 {item.label}
@@ -77,24 +77,39 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             ))}
 
             {/* THEME TOGGLE */}
-            <button className="p-2 rounded-full hover:bg-white/20 transition" onClick={toggleTheme}>
-              {isDark ? <Sun className="w-5 h-5 text-yellow-300" /> : <Moon className="w-5 h-5 text-blue-500" />}
+            <button
+              className="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900 transition"
+              onClick={toggleTheme}
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5 text-yellow-300" />
+              ) : (
+                <Moon className="w-5 h-5 text-green-700" />
+              )}
             </button>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE */}
           <div className="md:hidden flex items-center gap-2">
-            <button className="p-2 rounded-full hover:bg-white/20" onClick={toggleTheme}>
-              {isDark ? <Sun className="w-5 h-5 text-yellow-300" /> : <Moon className="w-5 h-5 text-blue-500" />}
-            </button>
             <button
-              className="p-2 rounded-full hover:bg-white/20"
+              className="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900"
+              onClick={toggleTheme}
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5 text-yellow-300" />
+              ) : (
+                <Moon className="w-5 h-5 text-green-700" />
+              )}
+            </button>
+
+            <button
+              className="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="w-5 h-5 text-[#FFB6C1]" />
+                <X className="w-5 h-5 text-green-600" />
               ) : (
-                <Menu className="w-5 h-5 text-[#FFB6C1]" />
+                <Menu className="w-5 h-5 text-green-600" />
               )}
             </button>
           </div>
@@ -109,7 +124,9 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className={`md:hidden ${
-              isDark ? 'bg-[#2B1123]/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-md shadow-md'
+              isDark
+                ? 'bg-green-950/95 backdrop-blur-md shadow-lg'
+                : 'bg-white/90 backdrop-blur-md shadow-md'
             }`}
           >
             <div className="flex flex-col px-6 py-4 gap-3">
@@ -119,7 +136,9 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
                   className={`transition ${
-                    isDark ? 'text-[#FFB6C1] hover:text-[#FFD6DD]' : 'text-gray-700 hover:text-pink-500'
+                    isDark
+                      ? 'text-green-300 hover:text-green-100'
+                      : 'text-green-800 hover:text-green-500'
                   }`}
                 >
                   {item.label}

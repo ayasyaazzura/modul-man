@@ -8,8 +8,8 @@ const certificates = [
     issuer: 'lomba antar kampung',
     date: '2022',
     credentialId: 'VCD-001',
-    image: '🎤',
-    color: 'from-pink-500/20 to-red-500/20',
+    image: '🏸',
+    color: 'from-green-200 to-green-400',
     link: '#',
   },
   {
@@ -17,8 +17,8 @@ const certificates = [
     issuer: 'event sekolah',
     date: '2023',
     credentialId: 'VCD-002',
-    image: '🎶',
-    color: 'from-purple-500/20 to-indigo-500/20',
+    image: '🏓',
+    color: 'from-green-300 to-green-500',
     link: '#',
   },
   {
@@ -27,14 +27,14 @@ const certificates = [
     date: '2023',
     credentialId: 'VCD-003',
     image: '🏆',
-    color: 'from-yellow-500/20 to-orange-500/20',
+    color: 'from-green-400 to-green-600',
     link: '#',
   },
 ];
 
 export default function CertificatesSection() {
   return (
-    <section id="certificates" className="py-20 md:py-32">
+    <section id="certificates" className="py-20 md:py-32 bg-green-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,11 +43,11 @@ export default function CertificatesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Prestasi</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
+          <span className="text-green-600 font-medium mb-2 block">Prestasi</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-green-900">
             Sertifikat &amp; Penghargaan
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-green-500 mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
@@ -60,7 +60,8 @@ export default function CertificatesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="h-full p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
+              <div className="h-full p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                
                 <div
                   className={`w-16 h-16 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${cert.color}`}
                 >
@@ -69,30 +70,36 @@ export default function CertificatesSection() {
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <Award className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                    <h3 className="font-display text-lg font-bold group-hover:text-primary transition-colors">
+                    <Award className="h-5 w-5 text-green-600 mt-0.5 shrink-0" />
+                    <h3 className="font-display text-lg font-bold text-green-900 group-hover:text-green-600 transition-colors">
                       {cert.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                  <p className="text-sm text-green-700">{cert.issuer}</p>
 
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-sm text-green-700">
                     <Calendar className="h-4 w-4" />
                     <span>{cert.date}</span>
                   </div>
 
-                  <p className="text-xs text-muted-foreground/70 font-mono">
+                  <p className="text-xs text-green-600 font-mono">
                     ID: {cert.credentialId}
                   </p>
 
-                  <Button variant="outline" size="sm" className="rounded-full mt-2" asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full mt-2 border-green-500 text-green-700 hover:bg-green-100"
+                    asChild
+                  >
                     <a href={cert.link} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Verifikasi
                     </a>
                   </Button>
                 </div>
+
               </div>
             </motion.div>
           ))}
