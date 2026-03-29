@@ -4,57 +4,30 @@ import { Button } from '@/components/ui/button';
 
 const certificates = [
   {
-    title: 'AWS Certified Solutions Architect',
-    issuer: 'Amazon Web Services',
-    date: '2024',
-    credentialId: 'AWS-SAA-123456',
+    title: 'Juara 1 Lomba Vokal Duet SMA',
+    issuer: 'MAN 1 Banda Aceh',
+    date: '2022',
+    credentialId: 'VCD-001',
+    image: '🎤',
+    color: 'from-pink-500/20 to-red-500/20',
+    link: '#',
+  },
+  {
+    title: 'Juara 2 Festival Vokal Duet Kota',
+    issuer: 'Dinas Pendidikan Banda Aceh',
+    date: '2023',
+    credentialId: 'VCD-002',
+    image: '🎶',
+    color: 'from-purple-500/20 to-indigo-500/20',
+    link: '#',
+  },
+  {
+    title: 'Harapan 1 Lomba Vokal Duet Nasional',
+    issuer: 'Kementerian Pendidikan',
+    date: '2023',
+    credentialId: 'VCD-003',
     image: '🏆',
-    color: 'from-orange-500/20 to-yellow-500/20',
-    link: '#',
-  },
-  {
-    title: 'Google Professional Cloud Developer',
-    issuer: 'Google Cloud',
-    date: '2023',
-    credentialId: 'GCP-PCD-789012',
-    image: '☁️',
-    color: 'from-blue-500/20 to-cyan-500/20',
-    link: '#',
-  },
-  {
-    title: 'Meta Front-End Developer',
-    issuer: 'Meta (Coursera)',
-    date: '2023',
-    credentialId: 'META-FE-345678',
-    image: '⚛️',
-    color: 'from-blue-600/20 to-indigo-500/20',
-    link: '#',
-  },
-  {
-    title: 'MongoDB Certified Developer',
-    issuer: 'MongoDB University',
-    date: '2023',
-    credentialId: 'MDB-DEV-901234',
-    image: '🍃',
-    color: 'from-green-500/20 to-emerald-500/20',
-    link: '#',
-  },
-  {
-    title: 'Certified Kubernetes Administrator',
-    issuer: 'CNCF',
-    date: '2022',
-    credentialId: 'CKA-567890',
-    image: '⚙️',
-    color: 'from-indigo-500/20 to-purple-500/20',
-    link: '#',
-  },
-  {
-    title: 'Professional Scrum Master I',
-    issuer: 'Scrum.org',
-    date: '2022',
-    credentialId: 'PSM-I-234567',
-    image: '📋',
-    color: 'from-teal-500/20 to-cyan-500/20',
+    color: 'from-yellow-500/20 to-orange-500/20',
     link: '#',
   },
 ];
@@ -70,9 +43,9 @@ export default function CertificatesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Kredensial</span>
+          <span className="text-primary font-medium mb-2 block">Prestasi</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Sertifikat &amp; Lisensi
+            Sertifikat &amp; Penghargaan
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -88,10 +61,12 @@ export default function CertificatesSection() {
               className="group"
             >
               <div className="h-full p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
-                <div className={`w-16 h-16 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${cert.color}`}>
+                <div
+                  className={`w-16 h-16 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${cert.color}`}
+                >
                   <span className="text-3xl">{cert.image}</span>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
                     <Award className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -99,20 +74,18 @@ export default function CertificatesSection() {
                       {cert.title}
                     </h3>
                   </div>
-                  
-                  <p className="text-sm text-muted-foreground">
-                    {cert.issuer}
-                  </p>
-                  
+
+                  <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     <span>{cert.date}</span>
                   </div>
-                  
+
                   <p className="text-xs text-muted-foreground/70 font-mono">
                     ID: {cert.credentialId}
                   </p>
-                  
+
                   <Button variant="outline" size="sm" className="rounded-full mt-2" asChild>
                     <a href={cert.link} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4 mr-1" />
